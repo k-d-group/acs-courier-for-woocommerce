@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name:       ACS Courier for WooCommerce
- * Plugin URI:        https://github.com/Hikhakk/acs-courier-for-woocommerce
+ * Plugin URI:        https://kdvassiliougroup.com/products/acs-courier-for-woocommerce/
  * Description:       Create ACS Courier vouchers and track shipments from WooCommerce. Supports Greece and Cyprus.
  * Version:           0.4.1
  * Requires at least: 6.0
  * Requires PHP:      8.0
- * Author:            KD Vassiliou Group
- * Author URI:        https://github.com/Hikhakk
+ * Author:            K.D. Vassiliou Group
+ * Author URI:        https://kdvassiliougroup.com/
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       acs-courier-for-woocommerce

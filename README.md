@@ -104,6 +104,10 @@ issued — after that, deletion is impossible.
 - [x] Cash on delivery
 - [ ] Map view for pickup point selection
 
+## Need help?
+
+The plugin is free and so is the code. If you would rather have it installed, configured or adapted to how you ship (other couriers, your own label layout, a different checkout), the team that wrote it can do that for you: [kdvassiliougroup.com](https://kdvassiliougroup.com/contact/?from=github-acs&service=integrations).
+
 ## Contributing
 
 Issues and pull requests welcome. Run `composer check` before opening a PR.

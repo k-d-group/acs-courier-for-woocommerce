@@ -108,6 +108,10 @@ own contract; this plugin does not process payments.
 
 No. See the External services section above.
 
+= Can you set it up for me? =
+
+Yes. The team that wrote the plugin can install and configure it, connect it to your ACS account, or adapt it to how you ship. See https://kdvassiliougroup.com/products/acs-courier-for-woocommerce/.
+
 == Screenshots ==
 
 1. The ACS panel on the WooCommerce order screen.
