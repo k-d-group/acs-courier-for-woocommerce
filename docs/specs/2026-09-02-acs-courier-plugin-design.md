@@ -286,8 +286,7 @@ HPOS on/off. PHPCS (WordPress-Extra + WordPress-Docs) and PHPStan level 6.
 
 The earlier 36–44 h figure was for a Cyprus-only, prepaid-only, single-site integration. Greece
 support, COD, ~1,590 pickup points, the extensibility surface, the CI matrix and directory
-compliance account for the difference. Deploying it to apoel.com.cy — and restoring that store's
-checkout, units, address and product weights — remains separate, at ~3–5 h.
+compliance account for the difference.
 
 ---
 
