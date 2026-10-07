@@ -130,10 +130,12 @@ final class OrderMapperTest extends TestCase {
 		self::assertTrue( $shipment->isToPickupPoint() );
 	}
 
-	public function test_an_acs_store_needs_the_rec_product(): void {
+	public function test_an_acs_store_in_greece_needs_the_rec_product(): void {
 		$shipment = OrderMapper::toShipment(
 			$this->order(
 				array(
+					'countryCode'         => 'GR',
+					'postcode'            => '10431',
 					'pickupPointId'       => 'N6:1',
 					'pickupPointIsLocker' => false,
 				)
@@ -143,6 +145,24 @@ final class OrderMapperTest extends TestCase {
 
 		self::assertSame( 'N6', $shipment->stationDestination );
 		self::assertContains( 'REC', $shipment->deliveryProducts );
+	}
+
+	public function test_an_acs_store_in_cyprus_carries_no_product(): void {
+		$shipment = OrderMapper::toShipment(
+			$this->order(
+				array(
+					'pickupPointId'       => 'NG:1',
+					'pickupPointIsLocker' => false,
+				)
+			),
+			$this->settings()
+		);
+
+		self::assertSame( 'NG', $shipment->stationDestination );
+		self::assertSame( 1, $shipment->stationBranchDestination );
+		// ACS Cyprus: "Shipment product value REC is not valid." It has no such product.
+		self::assertSame( array(), $shipment->deliveryProducts );
+		self::assertTrue( $shipment->isToPickupPoint() );
 	}
 
 	public function test_no_pickup_point_means_home_delivery(): void {

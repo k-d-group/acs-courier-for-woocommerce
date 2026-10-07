@@ -147,4 +147,18 @@ final class Country {
 	public function supportsLivePricing(): bool {
 		return $this->isGreece();
 	}
+
+	/**
+	 * Whether a delivery to an ACS store needs the REC product.
+	 *
+	 * Greece does. The Cyprus catalogue has no such product and rejects it with
+	 * "Shipment product value REC is not valid."; there a store is addressed by
+	 * station and branch alone, exactly like a Smartpoint locker. Confirmed
+	 * against the live API on 2026-10-03.
+	 *
+	 * @return bool
+	 */
+	public function requiresStorePickupProduct(): bool {
+		return $this->isGreece();
+	}
 }

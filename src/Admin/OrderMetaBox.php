@@ -169,7 +169,10 @@ final class OrderMetaBox {
 				? (int) $settings['content_type_id']
 				: null;
 			$mapper_settings->codPaymentWay        = (int) ( $settings['cod_payment_way'] ?? 0 );
-			$mapper_settings->pickupDate           = gmdate( 'Y-m-d' );
+			// The store's own date, not UTC: a shop in Cyprus or Greece runs three
+			// hours ahead, so between midnight and 03:00 gmdate() still reads
+			// yesterday and ACS rejects it with "Invalid pickup date value."
+			$mapper_settings->pickupDate           = current_time( 'Y-m-d' );
 
 			$shipment = OrderMapper::toShipment( WooOrderReader::read( $order ), $mapper_settings );
 
