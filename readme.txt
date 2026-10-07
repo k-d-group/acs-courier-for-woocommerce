@@ -4,7 +4,7 @@ Tags: woocommerce, shipping, courier, greece, cyprus
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 8.0
-Stable tag: 0.4.2
+Stable tag: 0.4.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -114,6 +114,10 @@ No. See the External services section above.
 2. The settings screen under WooCommerce > Settings > Shipping.
 
 == Changelog ==
+
+= 0.4.3 =
+* Fixed: vouchers created between midnight and 03:00 store time were rejected with "Invalid pickup
+  date value." The pickup date was taken in UTC, which still reads as yesterday in Greece and Cyprus.
 
 = 0.4.2 =
 * Fixed: deliveries to an ACS store in Cyprus were rejected with "Shipment product value REC is not

@@ -134,7 +134,8 @@ final class RateResolver {
 				'Acs_Station_Origin'      => $this->origin_station,
 				'Acs_Station_Destination' => $destination_station,
 				'Weight'                  => (string) $weight->forAcs(),
-				'Pickup_Date'             => gmdate( 'Y-m-d' ),
+				// Store-local date: UTC reads as yesterday in the small hours here.
+				'Pickup_Date'             => function_exists( 'current_time' ) ? current_time( 'Y-m-d' ) : gmdate( 'Y-m-d' ),
 				'Charge_Type'             => 2,
 				'Language'                => null,
 			)

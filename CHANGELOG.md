@@ -4,6 +4,14 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.3] - 2026-10-07
+
+### Fixed
+- Voucher creation failed with `Invalid pickup date value.` for anything attempted between midnight
+  and 03:00 store time. `Pickup_Date` was built with `gmdate()`, and Greece and Cyprus run UTC+2/+3,
+  so in those hours ACS was handed yesterday's date. It now uses `current_time()`, the store's own
+  date. The same correction applies to the price-calculation call.
+
 ## [0.4.2] - 2026-10-03
 
 ### Fixed

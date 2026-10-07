@@ -3,7 +3,7 @@
  * Plugin Name:       ACS Courier for WooCommerce
  * Plugin URI:        https://github.com/Hikhakk/acs-courier-for-woocommerce
  * Description:       Create ACS Courier vouchers and track shipments from WooCommerce. Supports Greece and Cyprus.
- * Version:           0.4.2
+ * Version:           0.4.3
  * Requires at least: 6.0
  * Requires PHP:      8.0
  * Author:            KD Vassiliou Group
