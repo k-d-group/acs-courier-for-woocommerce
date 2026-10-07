@@ -4,6 +4,17 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.2] - 2026-10-03
+
+### Fixed
+- Shipments to an **ACS store in Cyprus** were rejected with `Shipment product value REC is not
+  valid.` The REC product exists in the Greek catalogue only; in Cyprus a store is addressed by
+  station and branch alone, exactly like a Smartpoint locker. `Country::requiresStorePickupProduct()`
+  now decides, and `OrderMapper` adds REC for Greece only. Confirmed against the live API: the
+  printed voucher shows the chosen shop as its destination.
+- The unit test covering this asserted REC on a **Cyprus** fixture, so it locked in the broken
+  behaviour. Split into one test per country.
+
 ## [0.4.1] - 2026-09-02
 
 ### Fixed

@@ -70,7 +70,7 @@ final class OrderMapper {
 			$shipment->contentTypeId = $settings->defaultContentTypeId;
 		}
 
-		self::applyPickupPoint( $shipment, $order->pickupPointId, $order->pickupPointIsLocker );
+		self::applyPickupPoint( $shipment, $order->pickupPointId, $order->pickupPointIsLocker, $country );
 		self::applyCashOnDelivery( $shipment, $order->codAmount, $settings );
 
 		return $shipment;
@@ -110,15 +110,17 @@ final class OrderMapper {
 	 * ACS treats its two collection options differently, and rejects the request
 	 * if they are mixed. A Smartpoint locker is addressed by station and branch
 	 * alone: adding any product returns "An Acs-SmartPoint destination can not be
-	 * combined with other products." An ACS store instead needs the REC product.
-	 * Confirmed against the live API.
+	 * combined with other products." A store in Greece instead needs the REC
+	 * product; in Cyprus that product does not exist, so a store is addressed the
+	 * same way a locker is. Confirmed against the live API.
 	 *
 	 * @param Shipment $shipment  Shipment being built.
 	 * @param string   $point_id  Chosen point as "STATION:BRANCH".
 	 * @param bool     $is_locker Whether the point is a Smartpoint locker.
+	 * @param Country  $country   Destination country.
 	 * @return void
 	 */
-	private static function applyPickupPoint( Shipment $shipment, string $point_id, bool $is_locker ): void {
+	private static function applyPickupPoint( Shipment $shipment, string $point_id, bool $is_locker, Country $country ): void {
 		$point_id = trim( $point_id );
 		if ( '' === $point_id || false === strpos( $point_id, ':' ) ) {
 			return;
@@ -132,7 +134,7 @@ final class OrderMapper {
 		$shipment->stationDestination       = $station;
 		$shipment->stationBranchDestination = (int) $branch;
 
-		if ( $is_locker ) {
+		if ( $is_locker || ! $country->requiresStorePickupProduct() ) {
 			return;
 		}
 
